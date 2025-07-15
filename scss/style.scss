@@ -146,3 +146,15 @@ body {
     transform: scale(1.1);
   }
 }
+
+// REGISTER.HTML
+form input {
+  &:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+  }
+}
+
+#message {
+  font-weight: 500;
+}
