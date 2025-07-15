@@ -137,3 +137,12 @@ body {
     }
   }
 }
+
+// DETAIL.HTML
+
+.product-img {
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

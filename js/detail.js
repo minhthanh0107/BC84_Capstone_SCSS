@@ -67,27 +67,36 @@ const getProductDetail = async (id) => {
 
 // Hiển thị chi tiết sản phẩm
 const renderProductDetail = (product) => {
-    const sizeButtons = product.size.map(size => {
-        return `<button class="btn btn-outline-dark btn-sm me-2 mb-2">${size}</button>`
-    }).join("")
+  const sizeHTML = product.size.map(size => {
+    return `<button class="btn btn-outline-dark btn-size me-2 mb-2">${size}</button>`
+  }).join("")
 
-    productDetailContainer.innerHTML = `
+  productDetailContainer.innerHTML = `
     <div class="row align-items-center">
-      <div class="col-md-6">
-        <img src="${product.image}" alt="${product.name}" class="w-100 rounded">
+      <div class="col-md-6 text-center">
+        <img src="${product.image}" alt="${product.name}" id="productImage" class="w-75 rounded product-img">
       </div>
       <div class="col-md-6">
-        <h2>${product.name}</h2>
+        <h2 class="fw-bold">${product.name}</h2>
         <p class="text-muted">${product.description}</p>
         <div class="mb-3">
-          <strong>Size:</strong><br>
-          ${sizeButtons}
+          <strong>Available sizes:</strong><br>
+          <div class="size-group">${sizeHTML}</div>
         </div>
         <h4 class="text-warning">${product.price}$</h4>
         <button class="btn btn-warning mt-3">Add to Cart</button>
       </div>
     </div>
   `
+
+  // Xử lý click chọn size
+  const sizeButtons = document.querySelectorAll(".btn-size")
+  sizeButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      sizeButtons.forEach(b => b.classList.remove("active"))
+      btn.classList.add("active")
+    })
+  })
 }
 
 // Hiển thị các sản phẩm liên quan
